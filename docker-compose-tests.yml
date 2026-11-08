@@ -40,7 +40,7 @@ services:
       - theater_network_test
 
   minio:
-    image: pgsty/minio:RELEASE.2026-08-04T00-00-00Z
+    image: minio/minio:latest
     container_name: minio-theater-test
     command: server --console-address ":9001" /data
     ports:
