@@ -5,8 +5,6 @@ from typing import cast
 
 from uuid import uuid4
 
-import background_tasks
-import email_sender
 from fastapi import (
     APIRouter,
     BackgroundTasks,
