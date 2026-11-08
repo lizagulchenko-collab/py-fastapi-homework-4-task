@@ -7,7 +7,6 @@ from uuid import uuid4
 
 import background_tasks
 import email_sender
-from aiohttp import request
 from fastapi import (
     APIRouter,
     BackgroundTasks,
@@ -304,8 +303,13 @@ async def activate_account(
     status_code=status.HTTP_200_OK,
 )
 async def request_password_reset_token(
-        data: PasswordResetRequestSchema,
-        db: AsyncSession = Depends(get_db),
+    data: PasswordResetRequestSchema,
+    background_tasks: BackgroundTasks,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    email_sender: EmailSenderInterface = Depends(
+        get_accounts_email_notificator
+    ),
 ) -> MessageResponseSchema:
     """
     Endpoint to request a password reset token.
