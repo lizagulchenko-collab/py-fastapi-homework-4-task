@@ -32,6 +32,7 @@ from storages.interfaces import S3StorageInterface
 
 router = APIRouter()
 
+
 async def get_current_user(
     request: Request,
     db: AsyncSession = Depends(get_db),

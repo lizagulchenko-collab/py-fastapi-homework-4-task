@@ -17,6 +17,7 @@ from validation import (
     validate_birth_date,
 )
 
+
 class ProfileCreateSchema(BaseModel):
     first_name: str = Field(min_length=1)
     last_name: str = Field(min_length=1)
